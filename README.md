@@ -42,6 +42,10 @@ command without changing the source checkout.
 Publishing downloads the exact remote base SHA, migrates and tests that
 archive, then creates a commit from only the validated files.
 
+See the
+[public draft migration PR](https://github.com/gebrilfradj/sdkshift-openai-v4-benchmark/pull/1),
+including its exact base SHA and green CI checks.
+
 ```bash
 $env:SDKSHIFT_GITHUB_TOKEN = gh auth token
 node src/cli.js publish owner/repository `

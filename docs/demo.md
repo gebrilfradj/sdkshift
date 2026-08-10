@@ -16,7 +16,8 @@ Open these before recording:
 
 1. `sdkshift-openai-v4-benchmark\src\delete-file.ts`
 2. The benchmark repository's Actions page
-3. The SDKShift-created draft pull request
+3. The
+   [SDKShift-created draft pull request](https://github.com/gebrilfradj/sdkshift-openai-v4-benchmark/pull/1)
 
 Use a large terminal font. Do not show environment variables or the GitHub
 token.
@@ -73,4 +74,3 @@ Say:
 
 > The published result contains only the files tested from the exact remote
 > base commit, and it remains a draft for human review.
-
