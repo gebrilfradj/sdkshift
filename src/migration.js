@@ -60,6 +60,10 @@ function issue(file, message, line) {
   };
 }
 
+function lineTerminator(source) {
+  return source.includes("\r\n") ? "\r\n" : "\n";
+}
+
 function importClassNames(programPath, file, issues) {
   const names = [];
 
@@ -220,7 +224,7 @@ function analyzeSource(file, source) {
   return {
     issues,
     findings,
-    output: recast.print(ast).code
+    output: recast.print(ast, { lineTerminator: lineTerminator(source) }).code
   };
 }
 
@@ -367,7 +371,10 @@ function planMigration(root) {
 
   const packageBefore = fs.readFileSync(packageFile, "utf8");
   packageJson[dependency.field].openai = MIGRATION.to;
-  const packageAfter = `${JSON.stringify(packageJson, null, 2)}\n`;
+  const eol = lineTerminator(packageBefore);
+  const trailingNewlines = packageBefore.match(/(?:\r?\n)+$/)?.[0] || eol;
+  const packageAfter =
+    JSON.stringify(packageJson, null, 2).replaceAll("\n", eol) + trailingNewlines;
   changes.unshift({
     path: "package.json",
     before: packageBefore,
@@ -400,4 +407,3 @@ module.exports = {
   applyPlan,
   planMigration
 };
-

@@ -89,6 +89,23 @@ test("does not rename unrelated del methods", (t) => {
   assert.match(output, /client\.files\.delete\(id\)/);
 });
 
+test("preserves LF and CRLF line endings", (t) => {
+  const lfRoot = fixture(supportedSource);
+  const crlfRoot = fixture(supportedSource.replaceAll("\n", "\r\n"));
+  t.after(() => fs.rmSync(lfRoot, { recursive: true, force: true }));
+  t.after(() => fs.rmSync(crlfRoot, { recursive: true, force: true }));
+
+  const lfOutput = planMigration(lfRoot).changes.find((change) =>
+    change.path.endsWith(".ts")
+  ).after;
+  const crlfOutput = planMigration(crlfRoot).changes.find((change) =>
+    change.path.endsWith(".ts")
+  ).after;
+
+  assert.equal(lfOutput.includes("\r\n"), false);
+  assert.equal(crlfOutput.replaceAll("\r\n", "").includes("\n"), false);
+});
+
 test("supports aliased OpenAI imports and client names", (t) => {
   const source = [
     'import { OpenAI as SDK } from "openai";',
@@ -162,4 +179,3 @@ test("refuses CommonJS imports rather than guessing bindings", (t) => {
   assert.equal(plan.status, "blocked");
   assert.match(plan.issues[0].message, /CommonJS/);
 });
-
