@@ -1,0 +1,38 @@
+{
+  "name": "sdkshift",
+  "version": "0.1.0",
+  "description": "Tested pull requests for breaking SDK changes.",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "bin": {
+    "sdkshift": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "benchmark": "node scripts/run-benchmark.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gebrilfradj/sdkshift.git"
+  },
+  "keywords": [
+    "codemod",
+    "migration",
+    "openai",
+    "sdk"
+  ],
+  "author": "Gebril Fradj",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@babel/parser": "^8.0.4",
+    "@babel/traverse": "^8.0.4",
+    "@babel/types": "^8.0.4",
+    "cross-spawn": "^7.0.6",
+    "recast": "^0.24.0",
+    "semver": "^7.8.5",
+    "tar": "^7.5.22"
+  }
+}

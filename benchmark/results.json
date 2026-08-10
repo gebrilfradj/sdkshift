@@ -1,0 +1,26 @@
+{
+  "benchmark": "openai-v4-to-v5-delete-methods",
+  "repository": "https://github.com/gebrilfradj/sdkshift-openai-v4-benchmark.git",
+  "sourceDependency": "openai@4.104.0",
+  "naiveTarget": "openai@5.0.0",
+  "sdkshiftTarget": "^5.0.0",
+  "baseline": {
+    "expected": "pass",
+    "outcome": "passed"
+  },
+  "naiveUpgrade": {
+    "expected": "fail",
+    "outcome": "failed"
+  },
+  "sdkshiftMigration": {
+    "expected": "pass",
+    "outcome": "passed",
+    "findings": 1,
+    "changedPaths": [
+      "package.json",
+      "src/delete-file.ts",
+      "package-lock.json"
+    ]
+  },
+  "passed": true
+}

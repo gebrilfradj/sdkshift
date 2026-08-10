@@ -1,0 +1,5 @@
+node_modules/
+coverage/
+.sdkshift/
+benchmark/results-ci.json
+
