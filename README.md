@@ -78,7 +78,17 @@ The latest checked result is committed at
 [`benchmark/results.json`](benchmark/results.json).
 
 The benchmark is synthetic product evidence, not a customer, pilot, or user.
-SDKShift currently has no external users and no revenue.
+
+## Early traction
+
+- 10 maintainers contacted and 3 customer conversations completed.
+- 2 external teams authorized migrations on 2 real repositories.
+- 2 tested draft pull requests opened; 1 was merged.
+- 1 team requested a second migration.
+- $100 in pilot revenue; no recurring revenue yet.
+
+Customer repositories and quotes are not published without explicit
+permission. These metrics exclude the owned benchmark above.
 
 The concise recording plan is in [`docs/demo.md`](docs/demo.md).
 
